@@ -1,0 +1,15 @@
+{
+    "options": {
+        "hidden_ui": false,
+        "timeout": 100
+    },
+    "test_script_dir": [{
+        "path": "test_script",
+        "deep_search": true,
+        "run_times": 1
+    }, {
+        "path": "demo",
+        "deep_search": false,
+        "run_times": 1
+    }]
+}
