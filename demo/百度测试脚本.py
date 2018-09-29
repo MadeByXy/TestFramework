@@ -15,7 +15,7 @@ class test:
         http.get_dom('//*[@id="kw"]').send_keys('selenium python')
         http.get_dom('//*[@id="su"]').click()
         time.sleep(0)
-        http.get_dom('//*[@id="1"]/h3/a').click()
+        http.get_dom('//*[@id="2"]/h3/a').click()
         time.sleep(0)
 
         browser.switch_to_window(browser.window_handles[-1])

@@ -4,9 +4,9 @@ from lib import DataBaseHelper, HttpHelper
 
 class AutoTest:
     # 注入测试脚本
-    def __init__(self, options):
+    def __init__(self, options, browser_type, path):
         self.database = DataBaseHelper.DataBaseHelper()
-        self.http = HttpHelper.HttpHelper(options)
+        self.http = HttpHelper.HttpHelper(options, browser_type, path)
 
     # 运行测试脚本
     def run(self, test_script):

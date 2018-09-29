@@ -3,6 +3,15 @@
         "hidden_ui": false,
         "timeout": 100
     },
+    "browser_type": {
+        "ie": true,
+        "chrome": false,
+        "firefox": false,
+        "chrome360": false
+    },
+    "path": {
+        "360": "C:\\software\\360浏览器\\360se6\\Application\\360se.exe"
+    },
     "test_script_dir": [{
         "path": "test_script",
         "deep_search": true,

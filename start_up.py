@@ -38,9 +38,9 @@ def import_source(module_name, module_file_path):
     return module.test()
 
 
-def begin_test(name, options, script_path):
+def begin_test(name, options, script_path, browser_type, path):
     # 开始测试
-    environment = AutoTest.AutoTest(options)
+    environment = AutoTest.AutoTest(options, browser_type, path)
     try:
         python = import_source(name, script_path)
         environment.run(python)
@@ -51,7 +51,7 @@ def begin_test(name, options, script_path):
         print('{name}测试完成'.format(name=name))
 
 
-with open("config.json", 'r') as config:
+with open("config.json", 'r', encoding='UTF-8') as config:
     # 读取配置文件
     json = json.load(config)
     print('开始执行脚本')
@@ -62,10 +62,12 @@ with open("config.json", 'r') as config:
         for script_path in py_scripts:
             name = os.path.basename(script_path).split('.')[0]
             for index in range(item_config['run_times']):
-                thread = threading.Thread(target=begin_test, args=(
-                    name, json['options'], script_path))
-                thread.start()
-                thread_list.append(thread)
+                for browser_type in json['browser_type']:
+                    if json['browser_type'][browser_type]:
+                        thread = threading.Thread(target=begin_test, args=(
+                            name, json['options'], script_path, browser_type, json['path']))
+                        thread.start()
+                        thread_list.append(thread)
     for thread in thread_list:
         thread.join()
     print('全部执行完成')
